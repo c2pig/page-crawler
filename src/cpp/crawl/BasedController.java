@@ -36,7 +36,7 @@ public class BasedController<T> {
 		final AtomicLong taskCount = new AtomicLong(0); 
 		
 		Dispatcher dispatcher = new Dispatcher(new Worker<Event<String>>() {	
-			public void crawl(Event<String> t) {
+			public void exec(Event<String> t) {
 				System.out.println(t);
 			}
 		}, 100);
@@ -49,7 +49,6 @@ public class BasedController<T> {
 		topic.events().forEach(e -> {
 			if(e == null) {
 				this.statusListener.stop();
-				this.scheduler.shutdown();
 				throw new RuntimeException("End Of Loop");
 			}
 			taskCount.getAndIncrement();

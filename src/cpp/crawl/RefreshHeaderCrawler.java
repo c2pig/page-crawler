@@ -8,7 +8,7 @@ public class RefreshHeaderCrawler implements Worker<Event<String>> {
 		
 	}
 	
-	public void crawl(Event<String> e) {
+	public void exec(Event<String> e) {
 		System.out.println(e);
 	}
 
